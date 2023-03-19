@@ -16,14 +16,16 @@
   },
   "sideEffects": false,
   "dependencies": {
+    "@react-query-firebase/firestore": "1.0.0-dev.7",
+    "firebase": "9.18.0",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-query": "3.39.3"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
     "@spending-savvy/eslint-config-frontend": "workspace:*",
-    "@spending-savvy/tsconfig": "workspace:*",
     "@types/node": "17.0.12",
     "@types/react": "18.0.22",
     "@types/react-dom": "18.0.7",

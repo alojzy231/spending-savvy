@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import { usePaymentQuery } from '@hooks/queries/usePaymentQuery';
 
-export function Products(): JSX.Element {
+export function PaymentsPreview(): JSX.Element {
   const { data, isError, isLoading } = usePaymentQuery();
 
   if (isLoading) {

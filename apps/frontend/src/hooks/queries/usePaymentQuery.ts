@@ -4,6 +4,7 @@ import { collection, query } from 'firebase/firestore';
 import { UseQueryResult } from 'react-query';
 
 import { firestore } from '@config/firebase';
+import { collectionName } from '@consts/collectionName';
 
 import FirestoreError = firebase.firestore.FirestoreError;
 
@@ -25,7 +26,7 @@ export function usePaymentQuery(): UsePaymentQueryResult {
     toFirestore: (data: Payment) => data,
   });
 
-  return useFirestoreQuery(['spending'], ref, undefined, {
+  return useFirestoreQuery([collectionName.spending], ref, undefined, {
     select: (snapshot) =>
       snapshot.docs.map((documentSnapshot) => {
         const data = documentSnapshot.data();

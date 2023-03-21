@@ -3,9 +3,22 @@ import { query, collection } from 'firebase/firestore';
 
 import { firestore } from '@config/firebase';
 
+type Payment = {
+  cost: number;
+};
 function Products(): JSX.Element {
   // Define a query reference using the Firebase SDK
-  const ref = query(collection(firestore, 'spending'));
+  const ref = query(collection(firestore, 'spending')).withConverter<Payment>({
+    fromFirestore: (snapshot, options) => {
+      const data = snapshot.data(options);
+
+      // it is recommended way to return data from converter
+      return {
+        cost: data.cost,
+      };
+    },
+    toFirestore: (data: Payment) => data,
+  });
 
   // Provide the query to the hook
   const { data, isError, isLoading } = useFirestoreQuery(['spending'], ref, undefined, {
@@ -33,7 +46,10 @@ function Products(): JSX.Element {
       {!!data &&
         data.map((product) => (
           <li key={product.id}>
-            <h2>{product.id}</h2>
+            <li>{product.id}</li>
+            <ul>
+              <li>{product.cost}</li>
+            </ul>
           </li>
         ))}
     </ul>

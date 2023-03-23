@@ -1,0 +1,29 @@
+# Adds labels to pull requests based on the files that are changed.
+# https://github.com/actions/labeler
+
+# Adds labels to pull requests based on its title.
+# https://github.com/TimonVS/pr-labeler-action
+name: Add Labels
+on: pull_request_target
+
+jobs:
+  add-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+  pr-labeler:
+    permissions:
+      contents: read # for TimonVS/pr-labeler-action to read config file
+      pull-requests: write # for TimonVS/pr-labeler-action to add labels in PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TimonVS/pr-labeler-action@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/pr-labeler.yml # optional, .github/pr-labeler.yml is the default value

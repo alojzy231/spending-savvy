@@ -1,0 +1,12 @@
+# We validate PR titles by with:
+# https://github.com/amannn/action-semantic-pull-request
+# Valid PR titles are:
+# build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test
+
+feature: feat*
+fix: fix*
+refactor: ['perf*', 'refactor*', 'revert*', 'style*']
+dependencies: ['build*', 'chore*', 'ci*']
+documentation: docs*
+tests: test*
+

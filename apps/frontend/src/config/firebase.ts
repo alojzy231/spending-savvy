@@ -14,6 +14,7 @@ const firebaseConfig = {
   storageBucket: 'spending-savvy.appspot.com',
 };
 
+// doc
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);

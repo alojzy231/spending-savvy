@@ -8,5 +8,5 @@ fix: fix*
 refactor: ['perf*', 'refactor*', 'revert*', 'style*']
 dependencies: ['build*', 'chore*', 'ci*']
 documentation: docs*
-tests: test*
+#tests: test*
 
